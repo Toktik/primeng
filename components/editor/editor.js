@@ -21,6 +21,7 @@ var Editor = (function () {
         this.el = el;
         this.domHandler = domHandler;
         this.onTextChange = new core_1.EventEmitter();
+        this.onSelectionChange = new core_1.EventEmitter();
         this.onModelChange = function () { };
         this.onModelTouched = function () { };
     }
@@ -54,6 +55,19 @@ var Editor = (function () {
             });
             _this.onModelChange(html);
         });
+        this.quill.on('selection-change', function (range) {
+            _this.selfChange = true;
+            var html = editorElement.children[0].innerHTML;
+            var text = _this.quill.getText();
+            if (html == '<p><br></p>') {
+                html = null;
+            }
+            _this.onSelectionChange.emit({
+                htmlValue: html,
+                textValue: text,
+                range: range
+            });
+        });
     };
     Editor.prototype.writeValue = function (value) {
         this.value = value;
@@ -79,6 +93,10 @@ var Editor = (function () {
         core_1.Output(), 
         __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
     ], Editor.prototype, "onTextChange", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', (typeof (_b = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _b) || Object)
+    ], Editor.prototype, "onSelectionChange", void 0);
     __decorate([
         core_1.ContentChild(common_1.Header), 
         __metadata('design:type', Object)
@@ -106,10 +124,10 @@ var Editor = (function () {
             directives: [common_1.Header],
             providers: [domhandler_1.DomHandler, EDITOR_VALUE_ACCESSOR]
         }), 
-        __metadata('design:paramtypes', [(typeof (_b = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _b) || Object, domhandler_1.DomHandler])
+        __metadata('design:paramtypes', [(typeof (_c = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _c) || Object, domhandler_1.DomHandler])
     ], Editor);
     return Editor;
-    var _a, _b;
+    var _a, _b, _c;
 }());
 exports.Editor = Editor;
 //# sourceMappingURL=editor.js.map
