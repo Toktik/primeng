@@ -48,6 +48,7 @@ var Editor = (function () {
                 html = null;
             }
             _this.onTextChange.emit({
+                quill: _this.quill,
                 htmlValue: html,
                 textValue: text,
                 delta: delta,
@@ -63,6 +64,7 @@ var Editor = (function () {
                 html = null;
             }
             _this.onSelectionChange.emit({
+                quill: _this.quill,
                 htmlValue: html,
                 textValue: text,
                 range: range

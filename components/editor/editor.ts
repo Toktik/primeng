@@ -118,6 +118,7 @@ export class Editor implements AfterViewInit,ControlValueAccessor {
             }
 
             this.onTextChange.emit({
+                quill: this.quill,
                 htmlValue: html,
                 textValue: text,
                 delta: delta,
@@ -136,6 +137,7 @@ export class Editor implements AfterViewInit,ControlValueAccessor {
             }
 
             this.onSelectionChange.emit({
+                quill: this.quill,
                 htmlValue: html,
                 textValue: text,
                 range: range
