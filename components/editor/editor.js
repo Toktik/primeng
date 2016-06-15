@@ -56,7 +56,7 @@ var Editor = (function () {
             });
             _this.onModelChange(html);
         });
-        this.quill.on('selection-change', function (range) {
+        this.quill.on('selection-change', function (range, source) {
             _this.selfChange = true;
             var html = editorElement.children[0].innerHTML;
             var text = _this.quill.getText();
@@ -67,7 +67,8 @@ var Editor = (function () {
                 quill: _this.quill,
                 htmlValue: html,
                 textValue: text,
-                range: range
+                range: range,
+                source: source
             });
         });
     };

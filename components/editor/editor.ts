@@ -128,7 +128,7 @@ export class Editor implements AfterViewInit,ControlValueAccessor {
             this.onModelChange(html);
         });
 
-        this.quill.on('selection-change', (range) => {
+        this.quill.on('selection-change', (range, source) => {
             this.selfChange = true;
             let html = editorElement.children[0].innerHTML;
             let text = this.quill.getText();
@@ -140,7 +140,8 @@ export class Editor implements AfterViewInit,ControlValueAccessor {
                 quill: this.quill,
                 htmlValue: html,
                 textValue: text,
-                range: range
+                range: range,
+                source: source
             });
         });
     }
