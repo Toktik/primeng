@@ -70,7 +70,7 @@ var Tooltip = (function () {
     };
     Tooltip.prototype.hide = function () {
         this.container.style.display = 'none';
-        this.destroy();
+        this.ngOnDestroy();
     };
     Tooltip.prototype.create = function () {
         this.container = document.createElement('div');
@@ -84,7 +84,7 @@ var Tooltip = (function () {
         this.container.appendChild(tooltipText);
         document.body.appendChild(this.container);
     };
-    Tooltip.prototype.destroy = function () {
+    Tooltip.prototype.ngOnDestroy = function () {
         document.body.removeChild(this.container);
     };
     __decorate([
