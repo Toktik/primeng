@@ -100,6 +100,7 @@ export class Editor implements AfterViewInit,ControlValueAccessor {
           modules: {
               toolbar: toolbarElement
           },
+          bounds: editorElement,
           placeholder: this.placeholder,
           readOnly: this.readOnly,
           theme: 'snow'

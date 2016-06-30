@@ -33,6 +33,7 @@ var Editor = (function () {
             modules: {
                 toolbar: toolbarElement
             },
+            bounds: editorElement,
             placeholder: this.placeholder,
             readOnly: this.readOnly,
             theme: 'snow'
